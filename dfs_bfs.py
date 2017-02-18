@@ -17,14 +17,14 @@ class Search:
  
 class Graph:
     def __init__(self):
-        self.nodeA = Node("A", 5)
+        self.nodeA = Node("A")
         self.nodeB = Node("B")
         self.nodeC = Node("C")
         self.nodeD = Node("D")
         self.nodeE = Node("E")
         self.nodeF = Node("F")
         self.nodeG = Node("G")
-        self.nodeH = Node("H")
+        self.nodeH = Node("H", 5)
         self.nodeS = Node("S")
         
         self.nodeA.connectNode(self.nodeB)
@@ -44,7 +44,7 @@ class Graph:
         self.nodeG.connectNode(self.nodeH)
 
     def getNode(self):
-        return self.nodeG
+        return self.nodeA
 
 class DepthFirstSearch(Search):
 
