@@ -54,6 +54,8 @@ class DepthFirstSearch(Search):
 
         print "DFS Searching node", node.name
 
+        # Is the value in the current node?
+
         if(node.val == val):
             print "DFS Found the value in node", node.name
             self.valueFound = True
@@ -62,7 +64,7 @@ class DepthFirstSearch(Search):
         node.visited = True
 
         # Difference bewtween BFS and DFS is here
-        # Immediately traverse to the the child node (if it exists) 
+        # Immediately traverse to the the link node (if it exists) 
         # and check it for a search match 
 
         for link in node.links:
@@ -76,29 +78,33 @@ class BreathFirstSearch(Search):
         self.queue = deque()
 
     def search(self, val, node):
-        
         if(self.valueFound == True):
             return
 
-        node.visited = True
- 
         print "BFS Searching node", node.name
 
-        # Difference btween BFS and DFS is here
-        # Do not immeiately go to the child node
-        # Check a child for a match, if no match
-        # Save the child node in a queue and check its children 
-        # after checking all the children of the current node
-        # for a search match
+        # Is the value in the current node?
 
         if(node.val == val):
             print "BFS Found the value in node", node.name 
             self.valueFound = True
-            
+            return
+
+        node.visited = True
+
+        # Difference btween BFS and DFS is here
+        # Do not immeiately go to the link node
+        # check a link for a match, if no match
+        # save the link node in a queue and check its links
+        # after checking the links node ahead of it in the queue
+
         for link in node.links:             
+
+            #search each of the linked nodes for the value
+
             if(link.visited == True):
                 continue
-                
+
             if(link.val == val):
                 print "BFS Found the value in node", link.name 
                 self.valueFound = True
